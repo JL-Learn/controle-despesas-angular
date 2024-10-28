@@ -1,1 +1,265 @@
-/* You can add global styles to this file, and also import other style files */
+/* Reset básico: garante que todas as margens e preenchimentos sejam zerados e que o box-sizing inclua bordas e preenchimentos */
+* {
+  box-sizing: border-box;
+  /* Inclui bordas e preenchimentos no cálculo da largura e altura */
+  margin: 0;
+  /* Remove margens padrão */
+  padding: 0;
+  /* Remove preenchimentos padrão */
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  /* Define a fonte padrão da aplicação */
+  background-color: #f8f9fa;
+  /* Cor de fundo clara */
+  color: #343a40;
+  /* Cor do texto */
+  line-height: 1.6;
+  /* Aumenta o espaçamento entre linhas para melhor legibilidade */
+}
+
+/* Container principal: centraliza o conteúdo e limita a largura máxima */
+.container {
+  max-width: 1200px;
+  /* Largura máxima do container */
+  margin: 0 auto;
+  /* Centraliza horizontalmente */
+  padding: 20px;
+  /* Adiciona espaçamento interno */
+}
+
+/* Título: estilo para o título principal */
+h2 {
+  text-align: center;
+  /* Centraliza o texto */
+  margin-bottom: 20px;
+  /* Espaçamento abaixo do título */
+  color: #007bff;
+  /* Cor do título */
+}
+
+/* Estilo do formulário: define o layout do formulário de despesas */
+.form-despesa {
+  background: #fff;
+  /* Fundo branco para o formulário */
+  border-radius: 5px;
+  /* Bordas arredondadas */
+  padding: 20px;
+  /* Preenchimento interno */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* Sombra suave */
+  margin-bottom: 20px;
+  /* Espaçamento abaixo do formulário */
+}
+
+/* Estilo dos campos de entrada e seleção no formulário */
+.form-despesa input,
+.form-despesa select {
+  width: 100%;
+  /* Largura total do campo */
+  padding: 10px;
+  /* Preenchimento interno */
+  margin-bottom: 10px;
+  /* Espaçamento abaixo de cada campo */
+  border: 1px solid #ced4da;
+  /* Borda cinza clara */
+  border-radius: 4px;
+  /* Bordas arredondadas */
+}
+
+/* Estilo do botão no formulário */
+.form-despesa button {
+  background-color: #007bff;
+  /* Cor de fundo do botão */
+  color: #fff;
+  /* Cor do texto do botão */
+  border: none;
+  /* Remove a borda padrão */
+  padding: 10px;
+  /* Preenchimento interno */
+  border-radius: 5px;
+  /* Bordas arredondadas */
+  cursor: pointer;
+  /* Muda o cursor ao passar o mouse */
+}
+
+/* Efeito de hover para o botão */
+.form-despesa button:hover {
+  background-color: #0056b3;
+  /* Escurece a cor de fundo ao passar o mouse */
+}
+
+/* Estilo para a seção de filtros */
+.filtro {
+  margin-bottom: 20px;
+  /* Espaçamento abaixo da seção de filtros */
+}
+
+/* Estilo dos campos de entrada e seleção na seção de filtros */
+.filtro input,
+.filtro select {
+  width: 48%;
+  /* Largura de quase metade da tela */
+  margin-right: 2%;
+  /* Espaçamento à direita */
+}
+
+/* Garante que o último campo na linha não tenha margem à direita */
+.filtro select:last-child {
+  margin-right: 0;
+  /* Remove margem à direita do último elemento */
+}
+
+/* Adiciona espaço abaixo dos campos de filtro */
+.filtro input {
+  margin-bottom: 20px;
+  /* Espaçamento abaixo do campo de filtro */
+}
+
+/* Estilo da tabela de despesas */
+.table-despesas {
+  width: 100%;
+  /* Largura total da tabela */
+  border-collapse: collapse;
+  /* Remove o espaçamento entre as bordas das células */
+  margin-bottom: 20px;
+  /* Espaçamento abaixo da tabela */
+}
+
+/* Estilo das células da tabela */
+.table-despesas th,
+.table-despesas td {
+  border: 1px solid #dee2e6;
+  /* Borda cinza clara para as células */
+  padding: 10px;
+  /* Preenchimento interno das células */
+  text-align: left;
+  /* Alinhamento à esquerda do texto */
+}
+
+/* Estilo do cabeçalho da tabela */
+.table-despesas th {
+  background-color: #f1f1f1;
+  /* Cor de fundo clara para o cabeçalho */
+}
+
+/* Estilo para o gráfico */
+#myChart {
+  max-width: 100%;
+  /* Limita a largura máxima do gráfico */
+  height: auto;
+  /* Permite que a altura se ajuste proporcionalmente */
+}
+
+/* Estilo do botão "Excluir" */
+.btn-excluir {
+  background-color: #dc3545;
+  /* Vermelho para o botão de excluir */
+  color: #fff;
+  /* Cor do texto do botão */
+  border: none;
+  /* Remove a borda padrão */
+  padding: 8px;
+  /* Preenchimento interno */
+  border-radius: 5px;
+  /* Bordas arredondadas */
+  cursor: pointer;
+  /* Muda o cursor ao passar o mouse */
+  width: 100px;
+  /* Largura fixa para todos os botões */
+  margin-right: 10px;
+  /* Espaço à direita do botão de excluir */
+}
+
+.btn-excluir:hover {
+  background-color: #c82333;
+  /* Escurece ao passar o mouse */
+}
+
+/* Estilo do botão "Exportar PDF" */
+.btn-exportar {
+  background-color: #28a745;
+  /* Verde para o botão de exportar */
+  color: #fff;
+  /* Cor do texto do botão */
+  border: none;
+  /* Remove a borda padrão */
+  padding: 10px;
+  /* Preenchimento interno */
+  border-radius: 5px;
+  /* Bordas arredondadas */
+  cursor: pointer;
+  /* Muda o cursor ao passar o mouse */
+  margin-top: 20px;
+  /* Espaçamento acima do botão */
+}
+
+.btn-exportar:hover {
+  background-color: #218838;
+  /* Escurece ao passar o mouse */
+}
+
+/* Estilo do botão "Editar" */
+.btn-editar {
+  background-color: #17a2b8; /* Azul claro */
+  color: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+  width: 100px; /* Largura fixa para todos os botões */
+}
+
+.btn-editar:hover {
+  background-color: #138496;
+}
+
+/* Responsividade: ajusta estilos para telas menores */
+@media (max-width: 768px) {
+
+  .form-despesa,
+  .filtro {
+    padding: 10px;
+    /* Reduz o preenchimento interno em telas pequenas */
+  }
+
+  .form-despesa input,
+  .form-despesa select,
+  .filtro input,
+  .filtro select {
+    padding: 8px;
+    /* Reduz o preenchimento interno dos campos */
+  }
+
+  .form-despesa button {
+    padding: 8px;
+    /* Reduz o preenchimento interno do botão */
+  }
+
+  .table-despesas {
+    font-size: 14px;
+    /* Reduz o tamanho da fonte na tabela */
+  }
+}
+
+@media (max-width: 600px) {
+
+  .btn-editar,
+  .btn-excluir {
+    width: 100%;
+    /* Faz os botões ocuparem 100% da largura */
+    margin-left: 0;
+    /* Remove a margem à esquerda para dispositivos móveis */
+    margin-bottom: 10px;
+    /* Adiciona espaço entre os botões */
+  }
+
+  .table-despesas tr td {
+    flex-direction: column;
+    /* Alinha os botões verticalmente */
+    align-items: stretch;
+    /* Faz os botões se esticarem para caber na largura */
+  }
+}

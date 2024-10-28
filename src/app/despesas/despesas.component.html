@@ -1,0 +1,42 @@
+<div class="container">
+  <h2>Controle de Despesas</h2>
+  <div class="form-despesa">
+    <input [(ngModel)]="descricao" placeholder="Descrição" />
+    <input [(ngModel)]="valor" type="number" placeholder="Valor" />
+    <select [(ngModel)]="categoria">
+      <option value="" disabled selected>Selecione a Categoria</option>
+      <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+    </select>
+    <button (click)="adicionarDespesa()">{{ botaoTexto }}</button>
+  </div>
+
+  <h3>Total de Despesas: {{ calcularTotal() | moeda }}</h3>
+
+  <div class="filtro">
+    <input [(ngModel)]="filtroDescricao" placeholder="Filtrar por Descrição" />
+    <select [(ngModel)]="filtroCategoria">
+      <option value="">Todas as Categorias</option>
+      <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+    </select>
+  </div>
+
+  <table class="table-despesas">
+    <tr>
+      <th>Descrição</th>
+      <th>Valor</th>
+      <th>Categoria</th>
+      <th>Ações</th>
+    </tr>
+    <tr *ngFor="let despesa of despesas | filter: { descricao: filtroDescricao, categoria: filtroCategoria }; let i = index">
+      <td>{{ despesa.descricao }}</td>
+      <td>{{ despesa.valor | moeda }}</td>
+      <td>{{ despesa.categoria }}</td>
+      <td>
+        <button class="btn-excluir" (click)="excluirDespesa(i)">Excluir</button>
+        <button class="btn-editar" (click)="editarDespesa(i)">Editar</button>
+      </td>
+    </tr>
+  </table>
+  <button *ngIf="despesas.length > 0" class="btn-exportar" (click)="gerarPDF()">Exportar PDF</button>
+  <canvas id="myChart"></canvas>
+</div>
