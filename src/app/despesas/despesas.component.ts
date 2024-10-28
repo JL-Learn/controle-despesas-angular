@@ -33,6 +33,8 @@ export class DespesasComponent implements AfterViewInit {
   indexEdicao: number | null = null; // Variável para armazenar o índice da despesa em edição
   botaoTexto: string = 'Adicionar Despesa';
   private chart: Chart | null = null;
+  mensagem: string = '';
+  mensagemClass: string = '';
 
   constructor() {
     this.carregarDespesas();
@@ -43,19 +45,39 @@ export class DespesasComponent implements AfterViewInit {
   }
 
   adicionarDespesa() {
-    if (this.descricao && this.valor && this.categoria) {
-      const novaDespesa = { descricao: this.descricao, valor: this.valor, categoria: this.categoria };
-      if (this.indexEdicao !== null) {
-        this.despesas[this.indexEdicao] = novaDespesa; // Atualiza a despesa existente
-        this.indexEdicao = null; // Reseta o índice de edição
-        this.botaoTexto = 'Adicionar Despesa'; // Reseta o texto do botão
-      } else {
-        this.despesas.push(novaDespesa); // Adiciona uma nova despesa
-      }
-      this.resetForm();
-      this.salvarDespesas();
-      this.gerarGrafico();
+    // Validação de entrada
+    if (!this.descricao || !this.valor || this.valor <= 0 || !this.categoria) {
+      this.mensagem = 'Por favor, preencha todos os campos com valores válidos.';
+      this.mensagemClass = 'mensagem'; // Classe padrão para erro
+      return; // Se a validação falhar, sai da função
     }
+
+    const novaDespesa = { descricao: this.descricao, valor: this.valor, categoria: this.categoria };
+
+    if (this.indexEdicao !== null) {
+      // Atualiza a despesa existente
+      this.despesas[this.indexEdicao] = novaDespesa;
+      this.indexEdicao = null; // Reseta o índice de edição
+      this.botaoTexto = 'Adicionar Despesa'; // Reseta o texto do botão
+      this.mensagem = 'Despesa atualizada com sucesso!'; // Mensagem ao atualizar
+    } else {
+      // Adiciona uma nova despesa
+      this.despesas.push(novaDespesa);
+      this.mensagem = 'Despesa adicionada com sucesso!'; // Mensagem ao adicionar
+    }
+
+    this.resetForm();
+    this.salvarDespesas();
+    this.gerarGrafico();
+
+    // Define a classe da mensagem
+    this.mensagemClass = 'mensagem mensagem-success';
+
+    // Limpa a mensagem após 3 segundos
+    setTimeout(() => {
+      this.mensagem = '';
+      this.mensagemClass = '';
+    }, 3000); // 3000 milissegundos = 3 segundos
   }
 
   editarDespesa(index: number) {
@@ -65,12 +87,21 @@ export class DespesasComponent implements AfterViewInit {
     this.categoria = despesa.categoria;
     this.indexEdicao = index; // Armazena o índice da despesa em edição
     this.botaoTexto = 'Atualizar Despesa'; // Altera o texto do botão
+    this.mensagem = '';
   }
 
   excluirDespesa(index: number) {
     this.despesas.splice(index, 1);
     this.salvarDespesas();
     this.gerarGrafico();
+    this.mensagem = 'Despesa excluída com sucesso!';
+    this.mensagemClass = 'mensagem'; // Classe padrão para erro
+
+    // Limpa a mensagem após 3 segundos
+    setTimeout(() => {
+      this.mensagem = '';
+      this.mensagemClass = '';
+    }, 3000); // 3000 milissegundos = 3 segundos
   }
 
   salvarDespesas() {

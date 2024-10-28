@@ -1,0 +1,15 @@
+.mensagem {
+  text-align: center; /* Centraliza o texto */
+  margin: 15px 0; /* Adiciona margem acima e abaixo */
+  padding: 10px; /* Adiciona preenchimento interno */
+  background-color: #f8d7da; /* Cor de fundo */
+  color: #721c24; /* Cor do texto */
+  border: 1px solid #f5c6cb; /* Borda */
+  border-radius: 5px; /* Bordas arredondadas */
+}
+
+.mensagem-success {
+  background-color: #d4edda; /* Cor de fundo verde claro */
+  color: #155724; /* Cor do texto */
+  border: 1px solid #c3e6cb; /* Borda verde */
+}

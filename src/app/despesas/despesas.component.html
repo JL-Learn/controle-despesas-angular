@@ -20,6 +20,9 @@
     </select>
   </div>
 
+  <!-- Mensagem de feedback -->
+  <div *ngIf="mensagem" [ngClass]="mensagemClass">{{ mensagem }}</div>
+
   <table class="table-despesas">
     <tr>
       <th>Descrição</th>
